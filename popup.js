@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadNotes();
 });
 
+
 function createNote() {
     showNotePage();
 
@@ -32,11 +33,15 @@ function saveNote() {
         alert('Note content cannot be empty');
         return;
     }
+
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getFullYear()}.${(currentDate.getMonth() + 1).toString().padStart(2, '0')}.${currentDate.getDate().toString().padStart(2, '0')}`;
   
     const note = {
         id: Date.now(), // Unique ID for the note
         content: noteText,
-        date: new Date().toLocaleString()
+        date_origin: currentDate.toLocaleString(),
+        date: formattedDate
     };
   
     // Save note to storage
@@ -50,6 +55,7 @@ function saveNote() {
     });
 }
 
+
 function loadNotes() {
     chrome.storage.sync.get({notes: []}, function(data) {
         const notesListElement = document.getElementById('notes-list');
@@ -59,9 +65,13 @@ function loadNotes() {
             const noteElement = document.createElement('div');
             noteElement.className = 'note';
             noteElement.innerHTML = `
-                <div class="note-date">${note.date}</div>
-                <div class="note-content-preview">${note.content.substring(0, 100)}</div>
-                <button class="view-note" data-id="${note.id}">View</button>
+                <div class="note-container">
+                    <div class="note-box">
+                        <div class="note-content-preview">${note.content.substring(0, 1)}</div>
+                    </div>
+                    <div class="note-date">${note.date}</div>
+                    <button class="view-note" data-id="${note.id}">View</button>
+                </div>
             `;
             notesListElement.appendChild(noteElement);
     
@@ -71,6 +81,7 @@ function loadNotes() {
         });
     });
 }
+
 
 function showNoteContent(noteId) {
     // Find the note with the given id
@@ -84,7 +95,7 @@ function showNoteContent(noteId) {
         // Show note content with delete button
         const noteContentElement = document.getElementById('note-content');
         noteContentElement.innerHTML = `
-            <div class="note-date">${note.date}</div>
+            <div class="note-date">${note.date_origin}</div>
             <textarea id="note-text">${note.content}</textarea>
             <button id="save-note">Save Changes</button>
             <button id="delete-note">Delete Note</button>
@@ -104,6 +115,7 @@ function showNoteContent(noteId) {
     });
 }
 
+
 function updateNote(noteId, newText) {
     chrome.storage.sync.get({notes: []}, function(data) {
         const notes = data.notes;
@@ -120,6 +132,7 @@ function updateNote(noteId, newText) {
     });
 }
 
+
 function showMainPage() {
     document.getElementById('main-page').style.display = 'block';
     document.getElementById('note-page').style.display = 'none';
@@ -129,6 +142,7 @@ function showNotePage() {
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('note-page').style.display = 'block';
 }
+
 
 function deleteNote(noteId) {
     chrome.storage.sync.get({notes: []}, function(data) {
