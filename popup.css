@@ -8,13 +8,12 @@ body {
 #navigation-page {
     width: 100%;
     height: 20px;
-
     background-color: lightgray;
     margin: 0px;
     padding: 0px;
 }
 
-#create-note{
+#create-note {
     width: 50px;
     height: 50px;
     border-style: solid;
@@ -44,16 +43,20 @@ body {
 
 
 
+.note-container {
+    width: 50px;
+    height: 80px;
+    display: inline-block;
+}
+
 .note-box {
     width: 50px;
     height: 50px;
     border-style: solid;
     border-radius: 10px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-right: 10px;
 }
 
@@ -68,13 +71,6 @@ body {
     white-space: nowrap;
 }
 
-.note-container {
-    width: 50px;
-    height: 80px;
-
-    display: inline-block;
-}
-
 .view-note {
     margin-left: auto;
     padding: 5px 10px;
@@ -84,7 +80,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-  
+
 .view-note:hover {
     background-color: #0056b3;
 }
