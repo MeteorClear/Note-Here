@@ -2,15 +2,12 @@
 // chrome.storage.local also take consideration, stores data on user's divices, it can store more data than above
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('create-note').addEventListener('click', function() {
-        createNote();
-    });
-
+    loadNotes();
+    
     document.getElementById('back-button').addEventListener('click', function() {
         showMainPage();
     });
-
-    loadNotes();
+    
 });
 
 
@@ -74,11 +71,25 @@ function loadNotes() {
                 </div>
             `;
             notesListElement.appendChild(noteElement);
-    
+
             noteElement.querySelector('.view-note').addEventListener('click', function() {
                 showNoteContent(note.id);
             });
+            
         });
+
+        
+        const createNoteElement = document.createElement('div');
+        createNoteElement.className = 'note-container';
+        createNoteElement.innerHTML = `
+            <div id="create-note" class="note-box">+</div>
+        `;
+        notesListElement.appendChild(createNoteElement);
+
+        createNoteElement.querySelector('#create-note').addEventListener('click', function() {
+            createNote();
+        });
+        
     });
 }
 
