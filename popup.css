@@ -1,26 +1,38 @@
+/* 
+ * color palette
+ * green 
+ * #efffe8
+ * #abeb91
+ * #83a676
+ * blue
+ * #bdedff
+ * #6a909e
+ * red
+ * #facaca
+ * #9c7676
+ */
+
+
 body {
     width: 300px;
-
+    background-color: #efffe8;
 }
 
 
-
-#navigation-page {
-    width: 100%;
-    height: 20px;
-    background-color: lightgray;
-    margin: 0px;
-    padding: 0px;
-}
 
 #create-note {
-    width: 50px;
-    height: 50px;
-    border-style: solid;
-    border-radius: 10px;
+    font-size: 200%;
+    font-weight: 1000;
+    font-style: bold;
+    cursor: pointer;
 }
 
-#notes-list {
+#create-note:hover {
+    background-color: #83a676;
+    color: white;
+}
+
+#note-list {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -28,17 +40,53 @@ body {
 }
 
 #delete-note {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
+    width: 35%;
+    height: 25px;
     border-radius: 5px;
+    border: none;
+    background-color: #facaca;
     cursor: pointer;
 }
   
 #delete-note:hover {
-    background-color: #c82333;
+    background-color: #9c7676;
+    color: white;
+}
+
+#note-text, #new-note-text {
+    width: 98%;
+    height: 500px;
+    resize: none;
+    font-size: 12pt;
+}
+
+#back-button {
+    width: 20%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    background-color: #abeb91;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#back-button:hover {
+    background-color: #83a676;
+    color: white;
+}
+
+#save-note {
+    width: 40%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    background-color: #bdedff;
+    cursor: pointer;
+}
+
+#save-note:hover {
+    background-color: #6a909e;
+    color: white;
 }
 
 
@@ -47,17 +95,27 @@ body {
     width: 50px;
     height: 80px;
     display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+    
 }
 
 .note-box {
     width: 50px;
     height: 50px;
-    border-style: solid;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+    margin-right: 15px;
+    background-color: #abeb91;
+    font-style: bold;
+    font-weight: 500;
+}
+
+.note-box:hover {
+    background-color: #83a676;
+    color: white;
 }
 
 .note-content-preview {
@@ -72,16 +130,6 @@ body {
 }
 
 .view-note {
-    margin-left: auto;
-    padding: 5px 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.view-note:hover {
-    background-color: #0056b3;
-}
-  

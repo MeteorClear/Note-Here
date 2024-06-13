@@ -3,11 +3,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     loadNotes();
-    
-    document.getElementById('back-button').addEventListener('click', function() {
-        showMainPage();
-    });
-    
 });
 
 
@@ -16,9 +11,14 @@ function createNote() {
 
     const noteContentElement = document.getElementById('note-content');
     noteContentElement.innerHTML = `
+        <button id="back-button">Back</button>
         <textarea id="new-note-text"></textarea>
         <button id="save-note">Save Note</button>
     `;
+    // Return main page
+    document.getElementById('back-button').addEventListener('click', function() {
+        showMainPage();
+    });
 
     document.getElementById('save-note').addEventListener('click', saveNote);
 }
@@ -55,7 +55,7 @@ function saveNote() {
 
 function loadNotes() {
     chrome.storage.sync.get({notes: []}, function(data) {
-        const notesListElement = document.getElementById('notes-list');
+        const notesListElement = document.getElementById('note-list');
         notesListElement.innerHTML = ''; // Clear the list
     
         data.notes.forEach(note => {
@@ -63,11 +63,12 @@ function loadNotes() {
             noteElement.className = 'note';
             noteElement.innerHTML = `
                 <div class="note-container">
-                    <div class="note-box">
-                        <div class="note-content-preview">${note.content.substring(0, 1)}</div>
+                    <div class="view-note" data-id="${note.id}">
+                        <div class="note-box">
+                            <div class="note-content-preview">${note.content.substring(0, 1)}</div>
+                        </div>
+                        <div class="note-date">${note.date}</div>
                     </div>
-                    <div class="note-date">${note.date}</div>
-                    <button class="view-note" data-id="${note.id}">View</button>
                 </div>
             `;
             notesListElement.appendChild(noteElement);
@@ -82,7 +83,10 @@ function loadNotes() {
         const createNoteElement = document.createElement('div');
         createNoteElement.className = 'note-container';
         createNoteElement.innerHTML = `
-            <div id="create-note" class="note-box">+</div>
+            <div class="note-container">
+                <div id="create-note" class="note-box">+</div>
+                <div class="note-date">Create</div>
+            </div>
         `;
         notesListElement.appendChild(createNoteElement);
 
@@ -106,11 +110,17 @@ function showNoteContent(noteId) {
         // Show note content with delete button
         const noteContentElement = document.getElementById('note-content');
         noteContentElement.innerHTML = `
+            <button id="back-button">Back</button>
             <div class="note-date">${note.date_origin}</div>
             <textarea id="note-text">${note.content}</textarea>
             <button id="save-note">Save Changes</button>
             <button id="delete-note">Delete Note</button>
         `;
+
+        // Return main page
+        document.getElementById('back-button').addEventListener('click', function() {
+            showMainPage();
+        });
     
         // Save changes event
         document.getElementById('save-note').addEventListener('click', function() {
