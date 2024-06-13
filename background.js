@@ -1,1 +1,4 @@
-console.log("background.js load");
+/* 
+ * background.js
+ * Not used for now
+ */

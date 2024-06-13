@@ -1,1 +1,4 @@
-console.log("content.js load");
+/* 
+ * content.js
+ * Not used for now
+ */
