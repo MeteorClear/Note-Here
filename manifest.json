@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "version": "0.0.3",
-  "name": "Project N",
-  "description": "WIP",
+  "version": "1.0.0",
+  "name": "Note Here",
+  "description": "Note Here is a simple note extension. It can be sync across devices through the Chrome's storage API.",
 
   "icons": {
     "16": "images/icon-16.png",
@@ -13,13 +13,6 @@
 
   "permissions": [
     "storage"
-  ],
-
-  "content_scripts": [
-    {
-      "matches": ["https://*/*"],
-      "js": ["content.js"]
-    }
   ],
   
   "action": {
