@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function showMainPage() {
+    document.getElementById('main-page').style.display = 'block';
+    document.getElementById('note-page').style.display = 'none';
+}
+
+
+function showNotePage() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('note-page').style.display = 'block';
+}
+
+
 function createNote() {
     showNotePage();
 
@@ -81,7 +93,7 @@ function loadNotes() {
 
         
         const createNoteElement = document.createElement('div');
-        createNoteElement.className = 'note-container';
+        createNoteElement.className = 'note';
         createNoteElement.innerHTML = `
             <div class="note-container">
                 <div id="create-note" class="note-box">+</div>
@@ -111,7 +123,7 @@ function showNoteContent(noteId) {
         const noteContentElement = document.getElementById('note-content');
         noteContentElement.innerHTML = `
             <button id="back-button">Back</button>
-            <div class="note-date">${note.date_origin}</div>
+            <div class="inner-note-date">${note.date_origin}</div>
             <textarea id="note-text">${note.content}</textarea>
             <button id="save-note">Save Changes</button>
             <button id="delete-note">Delete Note</button>
@@ -154,15 +166,6 @@ function updateNote(noteId, newText) {
 }
 
 
-function showMainPage() {
-    document.getElementById('main-page').style.display = 'block';
-    document.getElementById('note-page').style.display = 'none';
-}
-
-function showNotePage() {
-    document.getElementById('main-page').style.display = 'none';
-    document.getElementById('note-page').style.display = 'block';
-}
 
 
 function deleteNote(noteId) {
