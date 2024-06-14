@@ -12,31 +12,43 @@
  * #9c7676
  */
 
+/* tag */
 
 body {
-    width: 300px;
+    width: 270px;
+    max-height: 615px;
     background-color: #efffe8;
 }
 
 
-
-#create-note {
-    font-size: 200%;
-    font-weight: 1000;
-    font-style: bold;
-    cursor: pointer;
-}
-
-#create-note:hover {
-    background-color: #83a676;
-    color: white;
-}
+/* id */
 
 #note-list {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     padding: 15px;
+}
+
+#note-text, #new-note-text {
+    width: 98%;
+    height: 500px;
+    resize: none;
+    font-size: 12pt;
+}
+
+#create-note {
+    font-size: 200%;
+    font-weight: 1000;
+    font-style: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#create-note:hover {
+    background-color: #83a676;
+    color: white;
+    transition: 0.25s;
 }
 
 #delete-note {
@@ -46,18 +58,13 @@ body {
     border: none;
     background-color: #facaca;
     cursor: pointer;
+    transition: 0.25s;
 }
   
 #delete-note:hover {
     background-color: #9c7676;
     color: white;
-}
-
-#note-text, #new-note-text {
-    width: 98%;
-    height: 500px;
-    resize: none;
-    font-size: 12pt;
+    transition: 0.25s;
 }
 
 #back-button {
@@ -68,11 +75,13 @@ body {
     background-color: #abeb91;
     margin-bottom: 5px;
     cursor: pointer;
+    transition: 0.25s;
 }
 
 #back-button:hover {
     background-color: #83a676;
     color: white;
+    transition: 0.25s;
 }
 
 #save-note {
@@ -82,44 +91,50 @@ body {
     border: none;
     background-color: #bdedff;
     cursor: pointer;
+    margin-right: 5px;
+    transition: 0.25s;
 }
 
 #save-note:hover {
     background-color: #6a909e;
     color: white;
+    transition: 0.25s;
 }
 
 
+/* class */
 
 .note-container {
-    width: 50px;
+    width: 60px;
     height: 80px;
     display: inline-block;
     margin-right: 5px;
     margin-left: 5px;
-    
+    padding-top: 5px;
 }
 
 .note-box {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
     background-color: #abeb91;
-    font-style: bold;
-    font-weight: 500;
+    
+    transition: 0.25s;
 }
 
 .note-box:hover {
     background-color: #83a676;
     color: white;
+    transition: 0.25s;
 }
 
 .note-content-preview {
-    font-size: large;
+    font-size: 18pt;
+    font-style: bold;
+    font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -127,9 +142,10 @@ body {
 
 .note-date {
     white-space: nowrap;
+    text-align: center;
 }
 
-.view-note {
-    cursor: pointer;
+.inner-note-date {
+    white-space: nowrap;
 }
 
