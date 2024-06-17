@@ -1,145 +1,186 @@
-/* 
- * color palette
- * green 
- * #efffe8
- * #abeb91
- * #83a676
- * blue
- * #bdedff
- * #6a909e
- * red
- * #facaca
- * #9c7676
- */
+/* color palette */
+:root {
+    --green-light: #efffe8;
+    --green-medium: #abeb91;
+    --green-dark: #83a676;
 
-/* tag */
+    --blue-light: #bdedff;
+    --blue-dark: #6a909e;
 
-body {
-    width: 270px;
-    max-height: 615px;
-    background-color: #efffe8;
+    --red-light: #facaca;
+    --red-dark: #9c7676;
 }
 
 
-/* id */
+/* General styles */
+body {
+    width: 270px;
+    max-height: 615px;
 
+    background-color: var(--green-light);
+}
+
+
+/* Note list styles */
 #note-list {
     display: flex;
     flex-wrap: wrap;
+
     gap: 15px;
     padding: 15px;
 }
 
+
+/* Textarea styles */
 #note-text, #new-note-text {
     width: 98%;
     height: 500px;
     resize: none;
+
     font-size: 12pt;
 }
 
+
+/* Create note button */
 #create-note {
-    font-size: 200%;
-    font-weight: 1000;
-    font-style: bold;
     cursor: pointer;
+
+    font-size: 200%;
+    font-style: bold;
+    font-weight: 1000;
+
     transition: 0.25s;
 }
 
 #create-note:hover {
-    background-color: #83a676;
     color: white;
+    background-color: var(--green-dark);
+
     transition: 0.25s;
 }
 
+
+/* Delete note button */
 #delete-note {
     width: 35%;
     height: 25px;
-    border-radius: 5px;
+
     border: none;
-    background-color: #facaca;
+    border-radius: 5px;
+
     cursor: pointer;
+    
+    background-color: var(--red-light);
+    
     transition: 0.25s;
 }
   
 #delete-note:hover {
-    background-color: #9c7676;
     color: white;
+    background-color: var(--red-dark);
+    
     transition: 0.25s;
 }
 
+
+/* Back button */
 #back-button {
     width: 20%;
     height: 25px;
-    border-radius: 5px;
+
     border: none;
-    background-color: #abeb91;
+    border-radius: 5px;
     margin-bottom: 5px;
+
     cursor: pointer;
+    
+    background-color: var(--green-medium);
+    
     transition: 0.25s;
 }
 
 #back-button:hover {
-    background-color: #83a676;
     color: white;
+    background-color: var(--green-dark);
+    
     transition: 0.25s;
 }
 
+
+/* Save note button */
 #save-note {
     width: 40%;
     height: 25px;
-    border-radius: 5px;
+
     border: none;
-    background-color: #bdedff;
-    cursor: pointer;
+    border-radius: 5px;
     margin-right: 5px;
+
+    cursor: pointer;
+
+    background-color: var(--blue-light);
+    
     transition: 0.25s;
 }
 
 #save-note:hover {
-    background-color: #6a909e;
     color: white;
+    background-color: var(--blue-dark);
+    
     transition: 0.25s;
 }
 
 
-/* class */
-
+/* Note container */
 .note-container {
+    display: inline-block;
+
     width: 60px;
     height: 80px;
-    display: inline-block;
-    margin-right: 5px;
-    margin-left: 5px;
+    
     padding-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
+
+/* Note box */
 .note-box {
-    width: 60px;
-    height: 60px;
-    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #abeb91;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 15px;
+
+    background-color: var(--green-medium);
     
     transition: 0.25s;
 }
 
 .note-box:hover {
-    background-color: #83a676;
     color: white;
+    background-color: #83a676;
+    
     transition: 0.25s;
 }
 
+
+/* Note content preview */
 .note-content-preview {
     font-size: 18pt;
     font-style: bold;
     font-weight: 500;
-    white-space: nowrap;
+
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
+
+/* Note date */
 .note-date {
     white-space: nowrap;
     text-align: center;
