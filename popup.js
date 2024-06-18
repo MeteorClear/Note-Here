@@ -1,23 +1,35 @@
 // chrome.storage.sync used, it syncs across all devices, but data limit exist
 // chrome.storage.local also take consideration, stores data on user's divices, it can store more data than above
 
+/**
+ * Load notes to first screen
+ */
 document.addEventListener('DOMContentLoaded', function() {
     loadNotes();
 });
 
 
+/**
+ * Displays the main page and hides the note page.
+ */
 function showMainPage() {
     document.getElementById('main-page').style.display = 'block';
     document.getElementById('note-page').style.display = 'none';
 }
 
 
+/**
+ * Displays the note page and hides the main page.
+ */
 function showNotePage() {
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('note-page').style.display = 'block';
 }
 
 
+/**
+ * Initializes the note creation process and sets up the note creation UI.
+ */
 function createNote() {
     showNotePage();
 
@@ -27,15 +39,15 @@ function createNote() {
         <textarea id="new-note-text"></textarea>
         <button id="save-note">Save Note</button>
     `;
-    // Return main page
-    document.getElementById('back-button').addEventListener('click', function() {
-        showMainPage();
-    });
 
+    document.getElementById('back-button').addEventListener('click', showMainPage);
     document.getElementById('save-note').addEventListener('click', saveNote);
 }
 
 
+/**
+ * Saves the note to chrome.storage.sync.
+ */
 function saveNote() {
     const noteText = document.getElementById('new-note-text').value;
     if (!noteText.trim()) {
@@ -65,6 +77,9 @@ function saveNote() {
 }
 
 
+/**
+ * Loads all notes from chrome.storage.sync and displays them.
+ */
 function loadNotes() {
     chrome.storage.sync.get({notes: []}, function(data) {
         const notesListElement = document.getElementById('note-list');
@@ -102,14 +117,16 @@ function loadNotes() {
         `;
         notesListElement.appendChild(createNoteElement);
 
-        createNoteElement.querySelector('#create-note').addEventListener('click', function() {
-            createNote();
-        });
+        createNoteElement.querySelector('#create-note').addEventListener('click', createNote);
         
     });
 }
 
 
+/**
+ * Displays the content of a specific note.
+ * @param {number} noteId - The ID of the note to display.
+ */
 function showNoteContent(noteId) {
     // Find the note with the given id
     chrome.storage.sync.get({notes: []}, function(data) {
@@ -130,9 +147,7 @@ function showNoteContent(noteId) {
         `;
 
         // Return main page
-        document.getElementById('back-button').addEventListener('click', function() {
-            showMainPage();
-        });
+        document.getElementById('back-button').addEventListener('click', showMainPage);
     
         // Save changes event
         document.getElementById('save-note').addEventListener('click', function() {
@@ -149,6 +164,11 @@ function showNoteContent(noteId) {
 }
 
 
+/**
+ * Updates the content of an existing note.
+ * @param {number} noteId - The ID of the note to update.
+ * @param {string} newText - The new content for the note.
+ */
 function updateNote(noteId, newText) {
     chrome.storage.sync.get({notes: []}, function(data) {
         const notes = data.notes;
@@ -166,8 +186,10 @@ function updateNote(noteId, newText) {
 }
 
 
-
-
+/**
+ * Deletes a note from chrome.storage.sync.
+ * @param {number} noteId - The ID of the note to delete.
+ */
 function deleteNote(noteId) {
     chrome.storage.sync.get({notes: []}, function(data) {
         const newNotes = data.notes.filter(note => note.id !== noteId);
