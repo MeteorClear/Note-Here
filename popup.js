@@ -6,7 +6,18 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
     loadNotes();
+    /*
+    loadOptions();
+    document.getElementById('options-button').addEventListener('click', showOptionsPage);
+    */
 });
+
+
+function showOptionsPage() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('note-page').style.display = 'none';
+    document.getElementById('options-list').style.display = 'block';
+}
 
 
 /**
@@ -15,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function showMainPage() {
     document.getElementById('main-page').style.display = 'block';
     document.getElementById('note-page').style.display = 'none';
+    document.getElementById('options-list').style.display = 'none';
 }
 
 
@@ -24,6 +36,7 @@ function showMainPage() {
 function showNotePage() {
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('note-page').style.display = 'block';
+    document.getElementById('options-list').style.display = 'none';
 }
 
 
@@ -198,4 +211,14 @@ function deleteNote(noteId) {
             loadNotes(); // Reload the notes to update the list
         });
     });
+}
+
+
+function loadOptions() {
+    const optionsListElement = document.getElementById('options-list');
+    optionsListElement.innerHTML = `
+        <button id="back-button">Back</button>
+    `
+
+    document.getElementById('back-button').addEventListener('click', showMainPage);
 }

@@ -190,3 +190,18 @@ body {
     white-space: nowrap;
 }
 
+#options-page {
+    min-height: 10px;
+}
+#options-button {
+    width: 10px;
+    height: 10px;
+
+    display: none;
+    float: right;
+
+    background-color: var(--green-medium);
+}
+#options-list {
+    display: none;
+}
